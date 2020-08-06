@@ -1,12 +1,11 @@
 import React from 'react'
 
-export default class StaticInput {
+export default class StaticInput extends React.Component {
     state = {word:""}
 
     changeHandler = (e) => {
-        // Need to tweak these coniditons to not allow words of multiple spaces
-        if (this.state.word.includes(" ") && this.state.word.length > 1) {
-            const newWord = this.state.word.replace(/\s/g, '')
+        if (e.target.value.includes(" ") && this.state.word.length > 1) {
+            const newWord = e.target.value.replace(/\s/g, '')
             this.setState({word:""})
             this.props.spaceHandler(newWord)
         }
